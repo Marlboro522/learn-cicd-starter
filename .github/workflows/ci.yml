@@ -20,3 +20,16 @@ jobs:
 
       - name: apitests
         run: go test ./... -cover
+
+  style:
+    name: formmattings
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Set up Go
+        uses: actions/setup-go@v6
+      - name: formatCode
+        run: test -z $(go fmt ./...)
